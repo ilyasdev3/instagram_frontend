@@ -1,0 +1,15 @@
+@layer components {
+	.login {
+		@apply max-w-[1190px]   flex mx-auto my-auto;
+	}
+	.formSection {
+		@apply flex-1 mx-auto my-auto;
+		.inputSection {
+			@apply flex flex-col;
+		}
+	}
+
+	.imgSection {
+		@apply flex-1 mx-auto my-auto p-14;
+	}
+}
