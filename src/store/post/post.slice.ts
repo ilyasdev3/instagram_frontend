@@ -78,6 +78,21 @@ export const getPostsByUser = createAsyncThunk(
   }
 );
 
+// get post by id
+export const getPostById = createAsyncThunk(
+  "post/getPostById",
+  async (postId: string, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance().get(`/post/${postId}`);
+      console.log(response.data, "response.data");
+
+      return response.data;
+    } catch (err: any) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const postSlice = createSlice({
   name: "post",
   initialState,
@@ -154,6 +169,22 @@ const postSlice = createSlice({
       state.post = action.payload.post;
     });
     builder.addCase(getPostsByUser.rejected, (state, action: any) => {
+      state.isInProgress = false;
+      state.isErrored = true;
+      state.error = action.payload.error;
+    });
+    builder.addCase(getPostById.pending, (state, action) => {
+      state.isInProgress = true;
+    });
+    builder.addCase(getPostById.fulfilled, (state, action) => {
+      state.isInProgress = false;
+      state.isSuccess = true;
+      state.message = action.payload.message;
+      console.log(action.payload.post, "action.payload.post");
+
+      state.post = action.payload.post;
+    });
+    builder.addCase(getPostById.rejected, (state, action: any) => {
       state.isInProgress = false;
       state.isErrored = true;
       state.error = action.payload.error;
