@@ -33,7 +33,7 @@ const Sidebar = () => {
   return (
     <>
       <aside
-        className={`md:w-[30%] lg:w-[25%]  sm:w-[50%] w-[70%] h-[100vh] flex p-4 justify-between flex-col border-r bg-white
+        className={`md:w-[350px] lg:w-[350px]  sm:w-[50%] w-[70%] h-[100vh] flex p-4 justify-between flex-col border-r bg-white
       
       ${showSidebar ? "block" : "hidden"}`}
       >
@@ -113,7 +113,7 @@ const Sidebar = () => {
 					</NavLink> */}
           </section>
         </section>
-        <section className="flex-1  flex items-end ">
+        <section className="flex-1  fixed bottom-0 w-[200px] flex items-end ">
           <NavLink
             onClick={handleLogout}
             to="/login"
