@@ -7,4 +7,6 @@ export type PostType = {
   desc: string;
   likes: string[];
   comments: string[];
+  likesCount?: number;
+  commentsCount?: number;
 };
